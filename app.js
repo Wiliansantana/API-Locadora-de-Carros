@@ -15,7 +15,10 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/api/v1/carro', async (req, res, next) => {
 
 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: true, 'args' : [
+        '--no-sandbox',
+        '--disable-setuid-sandbox'
+      ] });
     const page = await browser.newPage();
 
 
